@@ -5,7 +5,7 @@ import os
 from airflow.models import DagBag
 dags_dirs = [
                '/opt/airflow/1_data_pipeline',
-               '/opt/airflow/4_chart_and_apis'
+               '/opt/airflow/4_charts_and_apis'
             ]
 
 for dir in dags_dirs:

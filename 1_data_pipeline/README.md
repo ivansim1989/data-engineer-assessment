@@ -65,8 +65,16 @@
 
 8. Read the results
    
-   i Read it from results
+   i Read processed data from results
    
-   ii. Read it from DBeaver (as per step 6)
+   ii. Read processed data from DBeaver (as per step 6)
 
 9. Close the project by executing **. stop.sh** in terminal
+
+
+## _Methods explanation_
+
+1. Firstly, create the table in PostgreSQL if it does not exist.
+2. Prior to reading the data, perform a purge to remove any existing data.
+3. Process and write the datasets into the database within a for loop.
+4. Provide an option to generate CSV output in the result folder with an absolute path, facilitating easy reading.

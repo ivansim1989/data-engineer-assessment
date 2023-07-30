@@ -2,7 +2,7 @@
 
 ## _Data model_
 
-![Alt Text](schema.png)
+![schema](schema.png)
 
 ### General information
 

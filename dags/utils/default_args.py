@@ -1,5 +1,5 @@
 from datetime import timedelta
-from utlis.setup_logger import setup_logging
+from utils.setup_logger import setup_logging
 
 logger = setup_logging()
 
@@ -22,3 +22,4 @@ default_args = {
     'on_failure_callback': on_failure_task,
     'on_success_callback': on_success_task,
     'execution_time': timedelta(seconds=60)
+}

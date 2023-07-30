@@ -1,7 +1,7 @@
 CREATE SCHEMA IF NOT exists car_sales;
 
 CREATE TABLE IF NOT EXISTS car_sales.salesperson_details (
-    salesperson_id VARCHAR(50) NOT NULL UNIQUE PRIMARY KEY,,
+    salesperson_id VARCHAR(50) NOT NULL UNIQUE PRIMARY KEY,
     name VARCHAR(50),
     position VARCHAR(50),
     date_of_birth DATE,
@@ -53,21 +53,6 @@ CREATE TABLE IF NOT EXISTS car_sales.model_details (
     FOREIGN KEY (identifier_number) REFERENCES car_sales.manufacturer_details (identifier_number)
 );
 
-CREATE TABLE IF NOT EXISTS car_sales.transaction_details (
-    transaction_id VARCHAR(50) NOT NULL UNIQUE PRIMARY KEY,
-    invoice_id VARCHAR(50) NOT NULL,
-    serial_number VARCHAR(50) NOT NULL,
-    number_of_units INT,
-    currency CHAR(3),
-    total_price NUMERIC(20, 4),
-    created_by VARCHAR(50) DEFAULT CURRENT_USER,
-    created_time TIMESTAMP WITH TIME ZONE DEFAULT (NOW() AT TIME ZONE
-    'Asia/Singapore'),
-    processing_details JSONB,
-    FOREIGN KEY (invoice_id) REFERENCES car_sales.invoice_details (invoice_id),
-    FOREIGN KEY (serial_number) REFERENCES car_sales.model_details (serial_number)
-);
-
 CREATE TABLE IF NOT EXISTS car_sales.invoice_details (
     invoice_id VARCHAR(50) NOT NULL UNIQUE PRIMARY KEY,
     salesperson_id VARCHAR(50) NOT NULL,
@@ -86,4 +71,19 @@ CREATE TABLE IF NOT EXISTS car_sales.invoice_details (
     'Asia/Singapore'),
     processing_details JSONB,
     FOREIGN KEY (salesperson_id ) REFERENCES car_sales.salesperson_details (salesperson_id )
+);
+
+CREATE TABLE IF NOT EXISTS car_sales.transaction_details (
+    transaction_id VARCHAR(50) NOT NULL UNIQUE PRIMARY KEY,
+    invoice_id VARCHAR(50) NOT NULL,
+    serial_number VARCHAR(50) NOT NULL,
+    number_of_units INT,
+    currency CHAR(3),
+    total_price NUMERIC(20, 4),
+    created_by VARCHAR(50) DEFAULT CURRENT_USER,
+    created_time TIMESTAMP WITH TIME ZONE DEFAULT (NOW() AT TIME ZONE
+    'Asia/Singapore'),
+    processing_details JSONB,
+    FOREIGN KEY (invoice_id) REFERENCES car_sales.invoice_details (invoice_id),
+    FOREIGN KEY (serial_number) REFERENCES car_sales.model_details (serial_number)
 );

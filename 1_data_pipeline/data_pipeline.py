@@ -3,8 +3,8 @@ import pandas as pd
 from airflow.decorators import task, dag
 from airflow.operators.postgres_operator import PostgresOperator
 from datetime import datetime, timedelta
-from utlis.setup_logger import setup_logging
-from utlis.postgres_writer import write_to_postgres
+from utils.setup_logger import setup_logging
+from utils.postgres_writer import write_to_postgres
 from utils.default_args import default_args
 
 logger = setup_logging()
@@ -74,6 +74,7 @@ def write_output_csv(output_df, current_path, dataset):
 
 @dag("1_data_pipeline", start_date=datetime(2023, 7, 30), schedule_interval=timedelta(days=1), default_args=default_args, catchup=False)
 def data_pipeline_dag():
+
     create_table_task = PostgresOperator(
         task_id="create_table",
         postgres_conn_id="postgres",
@@ -87,8 +88,16 @@ def data_pipeline_dag():
         """
     )
 
+    purge_data_task = PostgresOperator(
+        task_id="purge_data",
+        postgres_conn_id="postgres",
+        sql="""
+            TRUNCATE TABLE processed_data;
+        """
+    )
+
     process_csv_task = process_csv(["dataset1.csv", "dataset2.csv"])
 
-    create_table_task >> process_csv_task
+    create_table_task >> purge_data_task >> process_csv_task
 
 data_pipeline_dag = data_pipeline_dag()

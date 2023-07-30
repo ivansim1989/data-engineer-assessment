@@ -2,7 +2,7 @@
 
 ## _Data Architecture_
 
-![Alt Text](architecture.png)
+![architecture](architecture.png)
 
 ### Step 1: Setup AWS Cognito
 
