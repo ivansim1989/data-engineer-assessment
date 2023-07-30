@@ -30,9 +30,9 @@
 
 ![active](active.png)
 
-![recovered](recovered.png)
+![Recovered](Recovered.png)
 
-![death](death.png)
+![Death](Death.png)
 
 ### Tableu dashboards
 
