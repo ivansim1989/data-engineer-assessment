@@ -40,4 +40,9 @@
 
 ## _Methods explanation_
 
-1. I triggered **api.py** script in airflow to fetch the covid19 data from the website. Then, I accessed this data in the jupyter notebook for visualization. Besides, I also loaded the same data into Tableu to create a simple dashboard.
+I triggered **api.py** script in airflow to fetch the covid19 data from the website. Then, I accessed this data in the jupyter notebook for visualization. Besides, I also loaded the same data into Tableu to create a simple dashboard.
+
+
+## _Note_
+1. Assuming that you have already set up a basic development environment and docker desktop on your workstation.
+2. This setup is for showcase purpose, not for production deployment

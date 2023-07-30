@@ -78,3 +78,8 @@
 2. Prior to reading the data, perform a purge to remove any existing data.
 3. Process and write the datasets into the database within a for loop.
 4. Provide an option to generate CSV output in the result folder with an absolute path, facilitating easy reading.
+
+
+## _Note_
+1. Assuming that you have already set up a basic development environment and docker desktop on your workstation.
+2. This setup is for showcase purpose, not for production deployment
