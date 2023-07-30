@@ -32,7 +32,7 @@
 
 ![Recovered](Recovered.png)
 
-![Death](Death.png)
+![Death](Deaths.png)
 
 ### Tableu dashboards
 
