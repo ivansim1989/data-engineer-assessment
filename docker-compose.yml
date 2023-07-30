@@ -1,0 +1,61 @@
+version: '2.1'
+services:
+
+######################################################
+# DATABASE SERVICE
+######################################################
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    logging:
+      driver: "json-file"
+      options:
+          max-file: "5"
+          max-size: "10m"
+    ports:
+      - 15432:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-q", "-d", "postgres", "-U", "postgres" ]
+      timeout: 45s
+      interval: 10s
+      retries: 10
+    volumes:
+      - ./2_databases/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+
+######################################################
+# AIRFLOW
+######################################################
+
+  airflow:
+    build: ./docker/airflow
+    restart: always
+    container_name: airflow
+    volumes:
+      - ./airflow.cfg:/opt/airflow/airflow.cfg
+      - ./dags:/opt/airflow/dags
+      - ./1_data_pipeline:/opt/airflow/1_data_pipeline
+      - ./4_charts_and_apis:/opt/airflow/4_charts_and_apis
+      - ./dataset1.csv:/opt/airflow/dataset1.csv
+      - ./dataset2.csv:/opt/airflow/dataset2.csv
+      - ./results:/opt/airflow/results
+    ports:
+      - 8080:8080
+    healthcheck:
+      test: [ "CMD", "nc", "-z", "airflow", "8080" ]
+      timeout: 45s
+      interval: 10s
+      retries: 10
+
+######################################################
+# NETWORK
+######################################################
+
+# Change name of default network otherwise URI invalid for HIVE
+# because of the _ contained by default network
+networks:
+  default:
+    name: airflow-network
