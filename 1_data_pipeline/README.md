@@ -74,6 +74,8 @@
 
 ## _Methods explanation_
 
+![data-pipeline](data-pipeline.png)
+
 1. Firstly, create the table in PostgreSQL if it does not exist.
 2. Prior to reading the data, perform a purge to remove any existing data.
 3. Process and write the datasets into the database within a for loop.
