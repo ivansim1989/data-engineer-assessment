@@ -8,4 +8,4 @@ with monthly_sales_quantity as (
 		join car_sales.transaction_details as transaction on (transaction.serial_number = transaction.serial_number)
 		join car_sales.invoice_details as invoice on (invoice.invoice_id = transaction.invoice_id)
 	group by manufacturer.identifier_number, manufacturer.manufacturer_name, to_char(transaction_timestamp, 'YYYY-MM'))
-select * from monthly_sales_quantity where year_month = to_char(current_date, 'YYYY-MM') order by quantity desc limit 10;
+select * from monthly_sales_quantity where year_month = to_char(current_date, 'YYYY-MM') order by quantity desc limit 3;

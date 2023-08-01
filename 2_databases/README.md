@@ -6,7 +6,7 @@
 
 ### General information
 
-1. The ERD diagram is auto-generated from DBeaver when creating the schemas.
+1. The ERD diagram is auto-generated from DBeaver when creating the schemas.The schema is created automatically 
 2. This data model does not strictly follow the star or snowflake schema; however, it leans more towards the snowflake schema as it creates a hierarchical structure, minimizes data redundancy, and stores most information only once.
 3. It is assume the business is estabished in Singapore.
 4. The data model presented above addresses basic needs, and other features such as incentive's packages have not been included due to time constraint. The data model is expected to evolve over time as new requirements and features are identified.
