@@ -74,7 +74,7 @@
 
 ## _Methods explanation_
 
-![data-pipeline](data-pipeline.png)
+![data-pipeline](pictures/data-pipeline.png)
 
 1. Firstly, create the table in PostgreSQL if it does not exist.
 2. Prior to reading the data, perform a purge to remove any existing data.

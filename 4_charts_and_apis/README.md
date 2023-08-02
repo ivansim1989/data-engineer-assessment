@@ -26,17 +26,17 @@
 
 ### Pandas plots
 
-![confirmed](confirmed.png)
+![confirmed](pictures/confirmed.png)
 
-![active](active.png)
+![active](pictures/active.png)
 
-![Recovered](Recovered.png)
+![Recovered](pictures/recovered.png)
 
-![Death](Deaths.png)
+![Death](pictures/deaths.png)
 
 ### Tableu dashboards
 
-![tableu](tableu.png)
+![tableu](pictures/tableu.png)
 
 ## _Methods explanation_
 
