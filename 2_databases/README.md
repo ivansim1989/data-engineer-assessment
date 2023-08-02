@@ -2,11 +2,11 @@
 
 ## _Data model_
 
-![schema](schema.png)
+![schema](pictures/schema.png)
 
 ### General information
 
-1. The ERD diagram is auto-generated from DBeaver when creating the schemas.The schema is created automatically 
+1. The ERD diagram is auto-generated from DBeaver when creating the schemas.The schema is created automatically when the docker is created.
 2. This data model does not strictly follow the star or snowflake schema; however, it leans more towards the snowflake schema as it creates a hierarchical structure, minimizes data redundancy, and stores most information only once.
 3. It is assume the business is estabished in Singapore.
 4. The data model presented above addresses basic needs, and other features such as incentive's packages have not been included due to time constraint. The data model is expected to evolve over time as new requirements and features are identified.
@@ -62,5 +62,5 @@ with monthly_sales_quantity as (
 		join car_sales.transaction_details as transaction on (transaction.serial_number = transaction.serial_number)
 		join car_sales.invoice_details as invoice on (invoice.invoice_id = transaction.invoice_id)
 	group by manufacturer.identifier_number, manufacturer.manufacturer_name, to_char(transaction_timestamp, 'YYYY-MM'))
-select * from monthly_sales_quantity where year_month = to_char(current_date, 'YYYY-MM') order by quantity desc limit 10;
+select * from monthly_sales_quantity where year_month = to_char(current_date, 'YYYY-MM') order by quantity desc limit 3;
 ```
